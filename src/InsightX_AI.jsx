@@ -392,7 +392,7 @@ export default function InsightXApp() {
   const newChat = async () => {
     if(sessionId) fetch(`${API_BASE}/api/session/${sessionId}`, {method:"DELETE"}).catch(()=>{});
     setSessionId(null);
-    setMessages([{role:"assistant",content:"New conversation started. What would you like to know about the UPI transactions dataset?",chart:null,confidence:null}]);
+    setMessages([{role:"assistant",content:"New conversation started. What would you like to know?",chart:null,confidence:null}]);
   };
 
   // ── CSV Upload → also fetches dashboard stats ────────────────────────────
@@ -770,7 +770,7 @@ export default function InsightXApp() {
                     ref={inputRef} value={input}
                     onChange={e=>setInput(e.target.value)}
                     onKeyDown={e=>e.key==="Enter"&&!e.shiftKey&&sendMessage()}
-                    placeholder={backendStatus==="error"?"⚠ Backend offline — start uvicorn first":"Ask anything about the UPI transactions dataset…"}
+                    placeholder={backendStatus==="error"?"⚠ Backend offline — start uvicorn first":"Ask anything …"}
                     disabled={loading || backendStatus==="error"}
                     style={{ flex:1, padding:"12px 16px", borderRadius:10, border:`1.5px solid ${THEME.border}`, background:THEME.bg, fontSize:14, color:THEME.textPrimary, outline:"none", transition:"border-color 0.2s" }}
                     onFocus={e=>e.target.style.borderColor=THEME.blue}
@@ -782,7 +782,7 @@ export default function InsightXApp() {
                   </button>
                 </div>
                 <p style={{ textAlign:"center", fontSize:11, color:THEME.textLight, margin:"8px 0 0" }}>
-                  Powered by {backendStatus==="ok"?"FastAPI + NVIDIA NIM / Anthropic":"FastAPI backend"} · Session: {sessionId?sessionId.slice(0,8)+"…":"none"}
+                  Powered by @Coder-2026. All rights reserved.
                 </p>
               </div>
             </div>
